@@ -1,0 +1,14 @@
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\phpMyAdmin.exe
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\phpMyAdmin.deps.json
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\phpMyAdmin.runtimeconfig.json
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\phpMyAdmin.runtimeconfig.dev.json
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\phpMyAdmin.dll
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\phpMyAdmin.pdb
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\obj\Debug\netcoreapp3\phpMyAdmin.csprojAssemblyReference.cache
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\obj\Debug\netcoreapp3\phpMyAdmin.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\obj\Debug\netcoreapp3\phpMyAdmin.AssemblyInfo.cs
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\obj\Debug\netcoreapp3\phpMyAdmin.dll
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\obj\Debug\netcoreapp3\phpMyAdmin.pdb
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\SixLabors.ImageSharp.dll
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\obj\Debug\netcoreapp3\phpMyAdmin.csproj.CopyComplete
