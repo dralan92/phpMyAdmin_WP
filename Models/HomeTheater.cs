@@ -8,12 +8,12 @@ namespace phpMyAdmin.Models
     {
     }
 
-    public class HowToChooseReceiver_PageData
+    public class HowToChoose_PageData
     {
         public string Title { get; set; }
         public string Description { get; set; }
+        public string[] Features { get; set; }
 
 
     }
 }
-//public string[] Features { get; set; }

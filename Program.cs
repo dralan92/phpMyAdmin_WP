@@ -12,7 +12,8 @@ namespace phpMyAdmin
     {
         static void Main(string[] args)
         {
-            var htcr_pageData = GetPageData_HowToChooseReceiver();
+            
+            GetSubFolders();
         }
 
 
@@ -28,23 +29,69 @@ namespace phpMyAdmin
            
         }
 
-        static HowToChooseReceiver_PageData GetPageData_HowToChooseReceiver()
+        static HowToChoose_PageData GetPageData_HowToChoose(string jsonFilePath)
         {
+            var htc_pd = new HowToChoose_PageData();
             try
             {
-                var json = File.ReadAllText("Receiver_How_To_Choose.json");
-                var jsonObj = JObject.Parse(json);//.ToObject<HowToChooseReceiver_PageData>();
+                var json = File.ReadAllText(jsonFilePath);
+                var jsonObj = JObject.Parse(json);
+                htc_pd.Title = jsonObj["title"].ToString();
+                htc_pd.Description = jsonObj["description"].ToString();
                 var features = jsonObj["features"] as JArray;
                 var features_stringArray = features.Select(f => f["feature"].ToString()).ToArray();
+                htc_pd.Features = features_stringArray;
 
             }
             catch(Exception ex)
             {
 
             }
-            return new HowToChooseReceiver_PageData();
+            return htc_pd;
 
         }
+
+        static void GetSubFolders()
+        {
+            DirectoryInfo directory = new DirectoryInfo("./");
+            DirectoryInfo[] directories = directory.GetDirectories();
+            foreach (DirectoryInfo folder in directories)
+            {
+                var folderSplitArray = folder.Name.Split("_");
+                if(folderSplitArray.Count() >=3)
+                if (folderSplitArray[1] == "How" && folderSplitArray[2] == "To")
+                {
+                    var x = folder.Name;
+                    var jsonFilePath = x + "/" + x + ".json";
+                    var htc_pd = GetPageData_HowToChoose(jsonFilePath);
+                    var templateFilePath = x + "/" + x + "_Template.txt";
+                    var contentHtml = GenerateContentHtmlFromTemplate_HTC(templateFilePath, htc_pd);
+
+                }
+            }
+
+
+        }
+
+        static string GenerateContentHtmlFromTemplate_HTC(string templatePath, HowToChoose_PageData htc_pd)
+        {
+            string contentHtml = File.ReadAllText(templatePath);
+            string listItem = "";
+            for(int i=0; i< htc_pd.Features.Count(); i++)
+            {
+                listItem += "<li>" + htc_pd.Features[i] + "</li>";
+            }
+            string unOrderedList = "<ul>" + listItem + "</ul>";
+            contentHtml = contentHtml
+                .Replace("Receiver_How_To_Choose_Template_Description", "<p>" + htc_pd.Description + "</p>")
+                .Replace("Receiver_How_To_Choose_Template_Features", unOrderedList);
+
+            File.WriteAllText("ContentHtml.txt", contentHtml);
+            return unOrderedList;
+        }
+
+
+
 
 
     }
