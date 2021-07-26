@@ -12,3 +12,4 @@ C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\obj\Debug\netcoreapp3\phpMyAdmi
 C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\SixLabors.ImageSharp.dll
 C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\obj\Debug\netcoreapp3\phpMyAdmin.csproj.CopyComplete
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\Newtonsoft.Json.dll

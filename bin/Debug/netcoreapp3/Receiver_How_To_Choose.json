@@ -1,0 +1,29 @@
+{
+  "id": 123,
+  "title": "How To Choose A Home Theater Receiver",
+  "description": "Let's look into various factors that we need to consider while choosing a Home Theater aka AV(Audio Video) receiver",
+  "features": [
+    {
+      "feature":"First of all, choosing a home theater receiver completely depends on your budget.If you are on a tight budget, you can go for home theater box systems, that contain both receiver and speakers."
+    },
+    {
+      "feature":"You have to consider the setup you are planning while choosing a receiver. For a 7.1.2 setup, there are 9 channels and 1 subwoofer, so you may need at least a 9.2 receiver."
+    },
+    {
+      "feature":"A receiver must have sufficient power output in order to power the output channel speakers. The total power of the receiver gets divided between channels, so while choosing a receiver you must consider the power output per channel. If sufficient power is not delivered to each channel speaker, it can damage the speakers and affect sound quality due to clipping."
+    },
+    {
+      "feature":"The next factor you have to consider is THD(Total Harmonic Distortion). Lower the THD better the sound quality. THD of 0.01% is the best available in the market, but if you don't have the budget for that, you can go for up to 0.1% THD. Anything greater than 0.1% is not advisable for good sound quality."
+    },
+    {
+      "feature":"In order to stream the latest audio and video format efficiently, a receiver should have more HDMI input and output ports with the latest HDCP support."
+    },
+    {
+      "feature":"If your receiver needs an amplifier to power high-powered speakers, it should have pre-outs, which are RCA or XLR outputs in the back of your receiver. So check the backside of the receiver to see if it has pre-outs other than the subwoofer pre-outs."
+    },
+    {
+      "feature":"Last but not least, you have to consider the various video and audio formats supported by the receiver. A receiver must support an 8K video format if it has to work correctly with an 8K video from a TV."
+    }
+  ]
+ 
+}

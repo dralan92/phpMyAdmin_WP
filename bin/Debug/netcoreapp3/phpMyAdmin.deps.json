@@ -8,10 +8,19 @@
     ".NETCoreApp,Version=v3.0": {
       "phpMyAdmin/1.0.0": {
         "dependencies": {
+          "Newtonsoft.Json": "13.0.1",
           "SixLabors.ImageSharp": "1.0.3"
         },
         "runtime": {
           "phpMyAdmin.dll": {}
+        }
+      },
+      "Newtonsoft.Json/13.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.1.25517"
+          }
         }
       },
       "SixLabors.ImageSharp/1.0.3": {
@@ -40,6 +49,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Newtonsoft.Json/13.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "path": "newtonsoft.json/13.0.1",
+      "hashPath": "newtonsoft.json.13.0.1.nupkg.sha512"
     },
     "SixLabors.ImageSharp/1.0.3": {
       "type": "package",

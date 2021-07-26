@@ -1,0 +1,7 @@
+<!-- wp:paragraph -->
+<p>Small description</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><li>Point 1</li><li>Ponit2</li></ul>
+<!-- /wp:list -->

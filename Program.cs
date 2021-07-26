@@ -1,7 +1,10 @@
-﻿using SixLabors.ImageSharp;
+﻿using Newtonsoft.Json.Linq;
+using phpMyAdmin.Models;
+using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace phpMyAdmin
 {
@@ -9,8 +12,7 @@ namespace phpMyAdmin
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            ReadAndUploadImage();
+            var htcr_pageData = GetPageData_HowToChooseReceiver();
         }
 
 
@@ -25,5 +27,25 @@ namespace phpMyAdmin
             }
            
         }
+
+        static HowToChooseReceiver_PageData GetPageData_HowToChooseReceiver()
+        {
+            try
+            {
+                var json = File.ReadAllText("Receiver_How_To_Choose.json");
+                var jsonObj = JObject.Parse(json);//.ToObject<HowToChooseReceiver_PageData>();
+                var features = jsonObj["features"] as JArray;
+                var features_stringArray = features.Select(f => f["feature"].ToString()).ToArray();
+
+            }
+            catch(Exception ex)
+            {
+
+            }
+            return new HowToChooseReceiver_PageData();
+
+        }
+
+
     }
 }
