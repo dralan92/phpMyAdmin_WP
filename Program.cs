@@ -66,6 +66,7 @@ namespace phpMyAdmin
                     var htc_pd = GetPageData_HowToChoose(jsonFilePath);
                     var templateFilePath = x + "/" + x + "_Template.txt";
                     var contentHtml = GenerateContentHtmlFromTemplate_HTC(templateFilePath, htc_pd);
+                    var sql = GenerateSql_AddPage_Htc(contentHtml, htc_pd);
 
                 }
             }
@@ -92,7 +93,55 @@ namespace phpMyAdmin
 
 
 
+        static string GenerateSql_AddPage_Htc(string contentHtml, HowToChoose_PageData htc_pd)
+        {
+            var sql = "INSERT INTO wp_posts ( post_author," +
+                " post_date," +
+                " post_date_gmt," +
+                " post_content," +
+                " post_title," +
+                " post_excerpt," +
+                " post_status," +
+                " comment_status," +
+                " ping_status," +
+                " post_password," +
+                " post_name," +
+                " to_ping," +
+                " pinged," +
+                " post_modified," +
+                " post_modified_gmt," +
+                " post_content_filtered," +
+                " post_parent," +
+                " guid," +
+                " menu_order," +
+                " post_type," +
+                " post_mime_type," +
+                " comment_count ) VALUES (" +
+                " 1," + //post_author
+                " now()," +//post_date
+                " now()," +//post_date_gmt
+                " '<h1>my content<h1>'," +//post_content
+                " 'my page title from code'," +//post_title
+                " ''," +//post_excerpt
+                " 'publish'," +//post_status
+                " 'closed'," +//comment_status
+                " 'closed'," +//ping_status
+                " ''," +//post_password
+                " 'my-page'," +//post_name
+                " ''," +//to_ping
+                " ''," +//pinged
+                " now()," +//post_modified
+                " now()," +//post_modified_gmt
+                " ''," +//post_content_filtered
+                " 0," +//post_parent
+                " ''," +//guid
+                " 0," +//menu_order
+                " 'page'," +//post_type
+                " ''," +//post_mime_type
+                " 0 )";//comment_count
 
+            return sql;
+        }
 
     }
 }
