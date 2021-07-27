@@ -1,7 +1,7 @@
 <!-- wp:paragraph -->
-Receiver_How_To_Choose_Template_Description
+<p>Small description</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:list -->
-Receiver_How_To_Choose_Template_Features
+<ul><li>Point 1</li><li>Ponit2</li></ul>
 <!-- /wp:list -->

@@ -58,17 +58,20 @@ namespace phpMyAdmin
             foreach (DirectoryInfo folder in directories)
             {
                 var folderSplitArray = folder.Name.Split("_");
-                if(folderSplitArray.Count() >=3)
-                if (folderSplitArray[1] == "How" && folderSplitArray[2] == "To")
+                if(folderSplitArray.Count() >= 3)
                 {
-                    var x = folder.Name;
-                    var jsonFilePath = x + "/" + x + ".json";
-                    var htc_pd = GetPageData_HowToChoose(jsonFilePath);
-                    var templateFilePath = x + "/" + x + "_Template.txt";
-                    var contentHtml = GenerateContentHtmlFromTemplate_HTC(templateFilePath, htc_pd);
-                    var sql = GenerateSql_AddPage_Htc(contentHtml, htc_pd);
+                    if (folderSplitArray[1] == "How" && folderSplitArray[2] == "To")
+                    {
+                        var x = folder.Name;
+                        var jsonFilePath = x + "/" + x + ".json";
+                        var htc_pd = GetPageData_HowToChoose(jsonFilePath);
+                        var templateFilePath = x + "/" + x + "_Template.txt";
+                        var contentHtml = GenerateContentHtmlFromTemplate_HTC(templateFilePath, htc_pd);
+                        var sql = GenerateSql_AddPage_Htc(contentHtml, htc_pd);
 
+                    }
                 }
+                
             }
 
 
@@ -95,7 +98,11 @@ namespace phpMyAdmin
 
         static string GenerateSql_AddPage_Htc(string contentHtml, HowToChoose_PageData htc_pd)
         {
-            var sql = "INSERT INTO wp_posts ( post_author," +
+            var pageId = DateTime.Now.ToString("yyyyMMddHHmmss");
+            var pageUrl = string.Join("-", htc_pd.Title.Split(new char[] { '-', ' ' })).ToLower();
+
+            var sql = "INSERT INTO wp_posts ( ID," +
+                " post_author," +
                 " post_date," +
                 " post_date_gmt," +
                 " post_content," +
@@ -117,17 +124,26 @@ namespace phpMyAdmin
                 " post_type," +
                 " post_mime_type," +
                 " comment_count ) VALUES (" +
+                "" +
+                pageId +
+                "," +//ID-->POI
                 " 1," + //post_author
                 " now()," +//post_date
                 " now()," +//post_date_gmt
-                " '<h1>my content<h1>'," +//post_content
-                " 'my page title from code'," +//post_title
+                " '" +
+                contentHtml +
+                "'," +//post_content-->POI
+                " '" +
+                htc_pd.Title +
+                "'," +//post_title-->POI
                 " ''," +//post_excerpt
                 " 'publish'," +//post_status
                 " 'closed'," +//comment_status
                 " 'closed'," +//ping_status
                 " ''," +//post_password
-                " 'my-page'," +//post_name
+                " '" +
+                pageUrl +
+                "'," +//post_name-->POI
                 " ''," +//to_ping
                 " ''," +//pinged
                 " now()," +//post_modified
