@@ -1,0 +1,28 @@
+{
+  "name": "Marantz SR8015",
+  "description": "11.2 Channel AV Receiver with HEOS Music Streaming",
+  "price": "3,299.00 USD",
+  "channels":"13",
+  "power":"140W 8ohm 2 channels driven with 0.05%THD",
+  "connections": "HEOS, AirPlay, Bluetooth, Wi-Fi, HDMI HDCP2.3",
+  "video": "8K, 4K, Dolby Vision,HDR 10+,Dynamic HDR, HLG, ALLM, QMS, QFT, VRR",
+  "audio":"Dolby Atmos, Dolby TrueHD, Dolby Surround, DTS:X, IMAX Enhanced",
+  "room":"true",
+  "tips": [
+    {
+      "tip": "With the latest technology in HDMI support, enjoy 8K quality video from all your 8K source devices."
+     
+    },
+    {
+      "tip": "Premium power performing amplification"
+    
+    },
+    {
+      "tip":"8K upscaling is available on all eight HDMI ports."
+    },
+    {
+      "tip":"Dolby Atmos Dolby Atmos Height Virtualization Technology"
+    }
+  ],
+  "amazon":"https://www.amazon.com/Marantz-SR8015-Channel-Receiver-Streaming/dp/B08CVS4FVJ/ref=sr_1_1?dchild=1&keywords=marantz+receiver&qid=1627388254&sr=8-1"
+}

@@ -12,19 +12,19 @@ namespace phpMyAdmin
     {
         static void Main(string[] args)
         {
-            
-            GetSubFolders();
+            ReadAndUploadImage();
+            //GetSubFolders();
         }
 
 
         static void ReadAndUploadImage()
         {
-            FileStream fileStream = new FileStream("image.jpg", FileMode.Open);
+            FileStream fileStream = new FileStream("Receiver_Marantz_SR8015/Receiver_Marantz_SR8015.jpg", FileMode.Open);
             using (StreamReader reader = new StreamReader(fileStream))
             {
                 using var image = Image.Load(fileStream);
-                image.Mutate(x => x.Resize(150, 150));
-                image.Save("image-150X150.jpg");
+                image.Mutate(x => x.Resize(400, 400));
+                image.Save("uploads/Receiver_Marantz_SR8015-400x400.jpg");
             }
            
         }
@@ -51,6 +51,34 @@ namespace phpMyAdmin
 
         }
 
+        static Receiver_PageData GetPageData_Receiver(string jsonFilePath)
+        {
+            var r_pd = new Receiver_PageData();
+            try
+            {
+                var json = File.ReadAllText(jsonFilePath);
+                var jsonObj = JObject.Parse(json);
+                r_pd.Name = jsonObj["name"].ToString();
+                r_pd.Description = jsonObj["description"].ToString();
+                r_pd.Price = jsonObj["price"].ToString();
+                r_pd.Channels = jsonObj["channels"].ToString();
+                r_pd.Power = jsonObj["power"].ToString();
+                r_pd.Connections = jsonObj["connections"].ToString();
+                r_pd.Video = jsonObj["video"].ToString();
+                r_pd.Audio = jsonObj["audio"].ToString();
+                r_pd.Room = jsonObj["room"].ToString();
+                r_pd.Amazon = jsonObj["amazon"].ToString();
+                var tips = jsonObj["tips"] as JArray;
+                var tips_stringArray = tips.Select(t => t["tip"].ToString()).ToArray();
+                r_pd.Tips = tips_stringArray;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return r_pd;
+        }
+
         static void GetSubFolders()
         {
             DirectoryInfo directory = new DirectoryInfo("./");
@@ -69,6 +97,12 @@ namespace phpMyAdmin
                         var contentHtml = GenerateContentHtmlFromTemplate_HTC(templateFilePath, htc_pd);
                         var sql = GenerateSql_AddPage_Htc(contentHtml, htc_pd);
 
+                    }
+                    else if(folderSplitArray[0] == "Receiver")
+                    {
+                        var x = folder.Name;
+                        var jsonFilePath = x + "/" + x + ".json";
+                        var r_pd = GetPageData_Receiver(jsonFilePath);
                     }
                 }
                 
