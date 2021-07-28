@@ -13,3 +13,15 @@ C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\SixLabors
 C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\obj\Debug\netcoreapp3\phpMyAdmin.csproj.CopyComplete
 C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\Newtonsoft.Json.dll
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\Microsoft.Win32.SystemEvents.dll
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\System.Drawing.Common.dll
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\Grpc.Core.dll
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\Grpc.Core.Api.dll
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\runtimes\linux-arm64\native\libgrpc_csharp_ext.arm64.so
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\runtimes\linux-x64\native\libgrpc_csharp_ext.x64.so
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\runtimes\osx-x64\native\libgrpc_csharp_ext.x64.dylib
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\runtimes\win-x64\native\grpc_csharp_ext.x64.dll
+C:\Users\user\source\repos\phpMyAdmin\phpMyAdmin\bin\Debug\netcoreapp3\runtimes\win-x86\native\grpc_csharp_ext.x86.dll

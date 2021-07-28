@@ -1,8 +1,12 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Grpc.Core;
+using Newtonsoft.Json.Linq;
 using phpMyAdmin.Models;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
 using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 
@@ -12,23 +16,99 @@ namespace phpMyAdmin
     {
         static void Main(string[] args)
         {
-            ReadAndUploadImage();
+
+            ResizeImage("Receiver_Marantz_SR8015/", "Receiver_Marantz_SR8015.jpg", 400, 400, 963, 444);
+
+
             //GetSubFolders();
         }
 
 
-        static void ReadAndUploadImage()
-        {
-            FileStream fileStream = new FileStream("Receiver_Marantz_SR8015/Receiver_Marantz_SR8015.jpg", FileMode.Open);
-            using (StreamReader reader = new StreamReader(fileStream))
-            {
-                using var image = Image.Load(fileStream);
-                image.Mutate(x => x.Resize(400, 400));
-                image.Save("uploads/Receiver_Marantz_SR8015-400x400.jpg");
-            }
+        //static void ReadAndUploadImage()
+        //{
+        //    FileStream fileStream = new FileStream("Receiver_Marantz_SR8015/Receiver_Marantz_SR8015.jpg", FileMode.Open);
+        //    using (StreamReader reader = new StreamReader(fileStream))
+        //    {
+        //        using var image = Image.Load(fileStream);
+        //        image.Mutate(x => x.Resize(400, 400));
+        //        image.Save("uploads/Receiver_Marantz_SR8015-400x400.jpg");
+        //    }
            
-        }
+        //}
+        //public static Bitmap ResizeImage(System.Drawing.Image image, int width, int height)
+        //{
+        //    var destRect = new System.Drawing.Rectangle(0, 0, width, height);
+        //    var destImage = new Bitmap(width, height);
 
+        //    destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+        //    using (var graphics = Graphics.FromImage(destImage))
+        //    {
+        //        graphics.CompositingMode = CompositingMode.SourceCopy;
+        //        graphics.CompositingQuality = CompositingQuality.HighQuality;
+        //        graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+        //        graphics.SmoothingMode = SmoothingMode.HighQuality;
+        //        graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+        //        using (var wrapMode = new ImageAttributes())
+        //        {
+        //            wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+        //            graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+        //        }
+        //    }
+
+        //    return destImage;
+        //}
+
+        private static void ResizeImage(string path, string originalFilename,
+                     /* note changed names */
+                     int canvasWidth, int canvasHeight,
+                     /* new */
+                     int originalWidth, int originalHeight)
+        {
+            System.Drawing.Image image = System.Drawing.Image.FromFile(path + originalFilename);
+
+            System.Drawing.Image thumbnail =
+                new Bitmap(canvasWidth, canvasHeight); // changed parm names
+            System.Drawing.Graphics graphic =
+                         System.Drawing.Graphics.FromImage(thumbnail);
+
+            graphic.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            graphic.SmoothingMode = SmoothingMode.HighQuality;
+            graphic.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            graphic.CompositingQuality = CompositingQuality.HighQuality;
+
+            /* ------------------ new code --------------- */
+
+            // Figure out the ratio
+            double ratioX = (double)canvasWidth / (double)originalWidth;
+            double ratioY = (double)canvasHeight / (double)originalHeight;
+            // use whichever multiplier is smaller
+            double ratio = ratioX < ratioY ? ratioX : ratioY;
+
+            // now we can get the new height and width
+            int newHeight = Convert.ToInt32(originalHeight * ratio);
+            int newWidth = Convert.ToInt32(originalWidth * ratio);
+
+            // Now calculate the X,Y position of the upper-left corner 
+            // (one of these will always be zero)
+            int posX = Convert.ToInt32((canvasWidth - (originalWidth * ratio)) / 2);
+            int posY = Convert.ToInt32((canvasHeight - (originalHeight * ratio)) / 2);
+
+            graphic.Clear(System.Drawing.Color.White); // white padding
+            graphic.DrawImage(image, posX, posY, newWidth, newHeight);
+
+            /* ------------- end new code ---------------- */
+
+            System.Drawing.Imaging.ImageCodecInfo[] info =
+                             ImageCodecInfo.GetImageEncoders();
+            EncoderParameters encoderParameters;
+            encoderParameters = new EncoderParameters(1);
+            encoderParameters.Param[0] = new EncoderParameter(Encoder.Quality,
+                             100L);
+            thumbnail.Save("uploads/" + newWidth + "." + originalFilename, info[1],
+                             encoderParameters);
+        }
         static HowToChoose_PageData GetPageData_HowToChoose(string jsonFilePath)
         {
             var htc_pd = new HowToChoose_PageData();
